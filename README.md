@@ -191,5 +191,36 @@ The [Faker gem](https://github.com/stympy/faker) has been provided for you to ma
 ## Good Luck!
 
 
+schema notes:
+
+employee = one-to-many with "teams" where employee is a "member" of the team, one-to-many with "progress reports" where employee is the author, one-to-many with "owned teams"
 
 
+join table for employee and teams? yes, because it's really a many-to-many relationship, just different names each way
+employee_id | team_id | employee_type
+1             3             owner
+1             3             member
+1             4             member
+1             5             member
+
+
+
+team = many-to-one with "owner", one-to-many with members, one-to-many with "progress reports"
+
+progress reports = many-to-one with "author" (employee), many-to-one with team
+
+
+e = Employee.first
+t = Team.first
+p = ProgressReport.first
+
+e.teams
+e.progress_reports
+e.owned_teams
+
+t.owner
+t.members
+t.progress_reports y
+
+p.author
+p.team y 

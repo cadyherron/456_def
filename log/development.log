@@ -1,0 +1,1295 @@
+  [1m[36m (19.1ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (4.4ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateEmployees (20160208163644)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  CREATE TABLE "employees" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20160208163644"]]
+  [1m[35m (7.4ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Sabina"], ["last_name", "Cassin"], ["email", "estrella.mayert@hauck.com"], ["created_at", "2016-02-08 16:40:44.580628"], ["updated_at", "2016-02-08 16:40:44.580628"]]
+  [1m[35m (9.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Kayden"], ["last_name", "Hansen"], ["email", "mack@dooley.biz"], ["created_at", "2016-02-08 16:40:44.593915"], ["updated_at", "2016-02-08 16:40:44.593915"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Mohammad"], ["last_name", "VonRueden"], ["email", "brown@maggio.biz"], ["created_at", "2016-02-08 16:40:44.600964"], ["updated_at", "2016-02-08 16:40:44.600964"]]
+  [1m[35m (6.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Adolphus"], ["last_name", "Kris"], ["email", "astrid_huels@heathcoterobel.biz"], ["created_at", "2016-02-08 16:40:44.609742"], ["updated_at", "2016-02-08 16:40:44.609742"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Jeromy"], ["last_name", "Yost"], ["email", "ellsworth@kaulke.net"], ["created_at", "2016-02-08 16:40:44.616415"], ["updated_at", "2016-02-08 16:40:44.616415"]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36mEmployee Load (1.3ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateEmployeeTeams (20160208164512)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "employee_teams" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "employee_id" integer NOT NULL, "team_id" integer NOT NULL, "employee_type" varchar NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.0ms)[0m  select sqlite_version(*)
+  [1m[36m (0.1ms)[0m  [1mCREATE  INDEX "index_employee_teams_on_employee_id_and_team_id" ON "employee_teams" ("employee_id", "team_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160208164512"]]
+  [1m[36m (12.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_employee_teams_on_employee_id_and_team_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_employee_teams_on_employee_id_and_team_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTeams (20160208165137)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "teams" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160208165137"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.5ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_employee_teams_on_employee_id_and_team_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_employee_teams_on_employee_id_and_team_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 1]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employees" WHERE "employees"."id" = ?[0m  [["id", 2]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 3]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employees" WHERE "employees"."id" = ?[0m  [["id", 4]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 5]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams"
+  [1m[36mEmployeeTeam Load (0.1ms)[0m  [1mSELECT "employee_teams".* FROM "employee_teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Winifred"], ["last_name", "Kshlerin"], ["email", "anika.kihn@friesen.biz"], ["created_at", "2016-02-08 16:57:52.219605"], ["updated_at", "2016-02-08 16:57:52.219605"]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["employee_id", 6], ["employee_type", "owner"], ["created_at", "2016-02-08 16:57:52.228835"], ["updated_at", "2016-02-08 16:57:52.228835"]]
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 6]]
+  [1m[36m (10.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams"
+  [1m[36mEmployeeTeam Load (0.1ms)[0m  [1mSELECT "employee_teams".* FROM "employee_teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "South Carolina lycanthropes"], ["created_at", "2016-02-08 16:59:04.922731"], ["updated_at", "2016-02-08 16:59:04.922731"]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "employees"."id" FROM "employees"[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "employee_teams" ("team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["team_id", 1], ["employee_type", "member"], ["created_at", "2016-02-08 16:59:04.933944"], ["updated_at", "2016-02-08 16:59:04.933944"]]
+  [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mEmployee Load (0.1ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mTeam Load (0.1ms)[0m  [1mSELECT "teams".* FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "teams" WHERE "teams"."id" = ?[0m  [["id", 1]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36mEmployeeTeam Load (0.2ms)[0m  [1mSELECT "employee_teams".* FROM "employee_teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "South Dakota fishes"], ["created_at", "2016-02-08 17:00:02.965466"], ["updated_at", "2016-02-08 17:00:02.965466"]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Glennie"], ["last_name", "Powlowski"], ["email", "melody@kulasbartell.info"], ["created_at", "2016-02-08 17:00:02.978382"], ["updated_at", "2016-02-08 17:00:02.978382"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:02.991409"], ["updated_at", "2016-02-08 17:00:02.991409"]]
+  [1m[36m (7.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.002247"], ["updated_at", "2016-02-08 17:00:03.002247"]]
+  [1m[36m (8.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.015589"], ["updated_at", "2016-02-08 17:00:03.015589"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.021931"], ["updated_at", "2016-02-08 17:00:03.021931"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.029708"], ["updated_at", "2016-02-08 17:00:03.029708"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.037178"], ["updated_at", "2016-02-08 17:00:03.037178"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.044671"], ["updated_at", "2016-02-08 17:00:03.044671"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.052395"], ["updated_at", "2016-02-08 17:00:03.052395"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.059998"], ["updated_at", "2016-02-08 17:00:03.059998"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.066666"], ["updated_at", "2016-02-08 17:00:03.066666"]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.074826"], ["updated_at", "2016-02-08 17:00:03.074826"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.081672"], ["updated_at", "2016-02-08 17:00:03.081672"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.088576"], ["updated_at", "2016-02-08 17:00:03.088576"]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.094951"], ["updated_at", "2016-02-08 17:00:03.094951"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.101493"], ["updated_at", "2016-02-08 17:00:03.101493"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.109799"], ["updated_at", "2016-02-08 17:00:03.109799"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.120611"], ["updated_at", "2016-02-08 17:00:03.120611"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.129333"], ["updated_at", "2016-02-08 17:00:03.129333"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 7], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.136934"], ["updated_at", "2016-02-08 17:00:03.136934"]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "New York druids"], ["created_at", "2016-02-08 17:00:03.144199"], ["updated_at", "2016-02-08 17:00:03.144199"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Birdie"], ["last_name", "Schowalter"], ["email", "marian@blickdaniel.name"], ["created_at", "2016-02-08 17:00:03.151366"], ["updated_at", "2016-02-08 17:00:03.151366"]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.160371"], ["updated_at", "2016-02-08 17:00:03.160371"]]
+  [1m[36m (7.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.171312"], ["updated_at", "2016-02-08 17:00:03.171312"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.178969"], ["updated_at", "2016-02-08 17:00:03.178969"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.186564"], ["updated_at", "2016-02-08 17:00:03.186564"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.193681"], ["updated_at", "2016-02-08 17:00:03.193681"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.201890"], ["updated_at", "2016-02-08 17:00:03.201890"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.211028"], ["updated_at", "2016-02-08 17:00:03.211028"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.218341"], ["updated_at", "2016-02-08 17:00:03.218341"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.227450"], ["updated_at", "2016-02-08 17:00:03.227450"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.234226"], ["updated_at", "2016-02-08 17:00:03.234226"]]
+  [1m[36m (6.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.243232"], ["updated_at", "2016-02-08 17:00:03.243232"]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.253197"], ["updated_at", "2016-02-08 17:00:03.253197"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.263402"], ["updated_at", "2016-02-08 17:00:03.263402"]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.273949"], ["updated_at", "2016-02-08 17:00:03.273949"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.282414"], ["updated_at", "2016-02-08 17:00:03.282414"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.290142"], ["updated_at", "2016-02-08 17:00:03.290142"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.297985"], ["updated_at", "2016-02-08 17:00:03.297985"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.306593"], ["updated_at", "2016-02-08 17:00:03.306593"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.315623"], ["updated_at", "2016-02-08 17:00:03.315623"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 8], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.324646"], ["updated_at", "2016-02-08 17:00:03.324646"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Alabama vampires"], ["created_at", "2016-02-08 17:00:03.332726"], ["updated_at", "2016-02-08 17:00:03.332726"]]
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Bessie"], ["last_name", "Grimes"], ["email", "shania@adams.org"], ["created_at", "2016-02-08 17:00:03.338848"], ["updated_at", "2016-02-08 17:00:03.338848"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.345642"], ["updated_at", "2016-02-08 17:00:03.345642"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.352559"], ["updated_at", "2016-02-08 17:00:03.352559"]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.359133"], ["updated_at", "2016-02-08 17:00:03.359133"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.366110"], ["updated_at", "2016-02-08 17:00:03.366110"]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.374024"], ["updated_at", "2016-02-08 17:00:03.374024"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.381651"], ["updated_at", "2016-02-08 17:00:03.381651"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.389059"], ["updated_at", "2016-02-08 17:00:03.389059"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.396678"], ["updated_at", "2016-02-08 17:00:03.396678"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.404112"], ["updated_at", "2016-02-08 17:00:03.404112"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 4], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.411176"], ["updated_at", "2016-02-08 17:00:03.411176"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.418144"], ["updated_at", "2016-02-08 17:00:03.418144"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.425839"], ["updated_at", "2016-02-08 17:00:03.425839"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.432979"], ["updated_at", "2016-02-08 17:00:03.432979"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.440284"], ["updated_at", "2016-02-08 17:00:03.440284"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.446552"], ["updated_at", "2016-02-08 17:00:03.446552"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.453856"], ["updated_at", "2016-02-08 17:00:03.453856"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.460876"], ["updated_at", "2016-02-08 17:00:03.460876"]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 9], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.468319"], ["updated_at", "2016-02-08 17:00:03.468319"]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "New Jersey giants"], ["created_at", "2016-02-08 17:00:03.474360"], ["updated_at", "2016-02-08 17:00:03.474360"]]
+  [1m[35m (5.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Antonina"], ["last_name", "Bogan"], ["email", "myron.hansen@nicolas.io"], ["created_at", "2016-02-08 17:00:03.482213"], ["updated_at", "2016-02-08 17:00:03.482213"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 5], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.489894"], ["updated_at", "2016-02-08 17:00:03.489894"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 4], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.497389"], ["updated_at", "2016-02-08 17:00:03.497389"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (9.3ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 5], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.514284"], ["updated_at", "2016-02-08 17:00:03.514284"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.521670"], ["updated_at", "2016-02-08 17:00:03.521670"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.529002"], ["updated_at", "2016-02-08 17:00:03.529002"]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.538436"], ["updated_at", "2016-02-08 17:00:03.538436"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.547910"], ["updated_at", "2016-02-08 17:00:03.547910"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.557125"], ["updated_at", "2016-02-08 17:00:03.557125"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.566225"], ["updated_at", "2016-02-08 17:00:03.566225"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.574354"], ["updated_at", "2016-02-08 17:00:03.574354"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.582735"], ["updated_at", "2016-02-08 17:00:03.582735"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.590140"], ["updated_at", "2016-02-08 17:00:03.590140"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 4], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.597181"], ["updated_at", "2016-02-08 17:00:03.597181"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.605654"], ["updated_at", "2016-02-08 17:00:03.605654"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.613737"], ["updated_at", "2016-02-08 17:00:03.613737"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.621898"], ["updated_at", "2016-02-08 17:00:03.621898"]]
+  [1m[36m (5.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 10], ["team_id", 2], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.630512"], ["updated_at", "2016-02-08 17:00:03.630512"]]
+  [1m[36m (6.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Michigan banshees"], ["created_at", "2016-02-08 17:00:03.640991"], ["updated_at", "2016-02-08 17:00:03.640991"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Cierra"], ["last_name", "Thiel"], ["email", "vita@runolfsdottir.co"], ["created_at", "2016-02-08 17:00:03.649768"], ["updated_at", "2016-02-08 17:00:03.649768"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 3], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.658399"], ["updated_at", "2016-02-08 17:00:03.658399"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.665465"], ["updated_at", "2016-02-08 17:00:03.665465"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.673777"], ["updated_at", "2016-02-08 17:00:03.673777"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 5], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.681742"], ["updated_at", "2016-02-08 17:00:03.681742"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 6], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.688825"], ["updated_at", "2016-02-08 17:00:03.688825"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.694821"], ["updated_at", "2016-02-08 17:00:03.694821"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 2], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.702302"], ["updated_at", "2016-02-08 17:00:03.702302"]]
+  [1m[36m (5.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 5], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.712447"], ["updated_at", "2016-02-08 17:00:03.712447"]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 6], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.718018"], ["updated_at", "2016-02-08 17:00:03.718018"]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 5], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.724422"], ["updated_at", "2016-02-08 17:00:03.724422"]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 3], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.730573"], ["updated_at", "2016-02-08 17:00:03.730573"]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 6], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.738987"], ["updated_at", "2016-02-08 17:00:03.738987"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 5], ["employee_type", "owner"], ["created_at", "2016-02-08 17:00:03.746474"], ["updated_at", "2016-02-08 17:00:03.746474"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 5], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.754703"], ["updated_at", "2016-02-08 17:00:03.754703"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 11], ["team_id", 4], ["employee_type", "member"], ["created_at", "2016-02-08 17:00:03.762214"], ["updated_at", "2016-02-08 17:00:03.762214"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[36mEmployee Load (0.4ms)[0m  [1mSELECT "employees".* FROM "employees"[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams"
+  [1m[36mEmployeeTeam Load (0.9ms)[0m  [1mSELECT "employee_teams".* FROM "employee_teams"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProgressReports (20160208170126)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (0.3ms)[0m  [1mCREATE TABLE "progress_reports" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text NOT NULL, "author_id" integer NOT NULL, "team_id" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20160208170126"]]
+  [1m[36m (9.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_employee_teams_on_employee_id_and_team_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_employee_teams_on_employee_id_and_team_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 7]]
+  [1m[36m (5.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employees" WHERE "employees"."id" = ?[0m  [["id", 8]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 9]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employees" WHERE "employees"."id" = ?[0m  [["id", 10]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 11]]
+  [1m[36m (11.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "teams" WHERE "teams"."id" = ?  [["id", 2]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "teams" WHERE "teams"."id" = ?[0m  [["id", 3]]
+  [1m[35m (5.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "teams" WHERE "teams"."id" = ?  [["id", 4]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (2.8ms)[0m  [1mDELETE FROM "teams" WHERE "teams"."id" = ?[0m  [["id", 5]]
+  [1m[35m (7.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM "teams" WHERE "teams"."id" = ?  [["id", 6]]
+  [1m[36m (6.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mEmployeeTeam Load (0.6ms)[0m  SELECT "employee_teams".* FROM "employee_teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 1]]
+  [1m[36m (8.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 2]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 3]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 4]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 5]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 6]]
+  [1m[35m (6.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 7]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 8]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 9]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 10]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 11]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.3ms)[0m  begin transaction
+  [1m[36mSQL (0.6ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 12]]
+  [1m[35m (27.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 13]]
+  [1m[36m (30.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 14]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (1.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 15]]
+  [1m[36m (21.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 16]]
+  [1m[35m (29.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 17]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 18]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.3ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 19]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 20]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 21]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 22]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 23]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 24]]
+  [1m[35m (6.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 25]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 26]]
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 27]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 28]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 29]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 30]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 31]]
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 32]]
+  [1m[35m (3.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 33]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 34]]
+  [1m[35m (5.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 35]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 36]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 37]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 38]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 39]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 40]]
+  [1m[35m (4.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 41]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 42]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 43]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 44]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 45]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 46]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 47]]
+  [1m[36m (5.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 48]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 49]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 50]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 51]]
+  [1m[36m (5.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 52]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 53]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 54]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 55]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 56]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 57]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 58]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 59]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 60]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 61]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 62]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 63]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 64]]
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 65]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 66]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 67]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 68]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 69]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 70]]
+  [1m[35m (5.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 71]]
+  [1m[36m (6.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 72]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 73]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 74]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 75]]
+  [1m[36m (5.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 76]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 77]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 78]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 79]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 80]]
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 81]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 82]]
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 83]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 84]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 85]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 86]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 87]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 88]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 89]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Indiana lycanthropes"], ["created_at", "2016-02-08 17:05:43.639340"], ["updated_at", "2016-02-08 17:05:43.639340"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Raphael"], ["last_name", "Thompson"], ["email", "freeman@lubowitz.org"], ["created_at", "2016-02-08 17:05:43.646093"], ["updated_at", "2016-02-08 17:05:43.646093"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "member"], ["created_at", "2016-02-08 17:05:43.653993"], ["updated_at", "2016-02-08 17:05:43.653993"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "owner"], ["created_at", "2016-02-08 17:05:43.661723"], ["updated_at", "2016-02-08 17:05:43.661723"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "owner"], ["created_at", "2016-02-08 17:05:43.668538"], ["updated_at", "2016-02-08 17:05:43.668538"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "member"], ["created_at", "2016-02-08 17:05:43.674217"], ["updated_at", "2016-02-08 17:05:43.674217"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "member"], ["created_at", "2016-02-08 17:05:43.680561"], ["updated_at", "2016-02-08 17:05:43.680561"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "member"], ["created_at", "2016-02-08 17:05:43.686713"], ["updated_at", "2016-02-08 17:05:43.686713"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "owner"], ["created_at", "2016-02-08 17:05:43.692650"], ["updated_at", "2016-02-08 17:05:43.692650"]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "owner"], ["created_at", "2016-02-08 17:05:43.698696"], ["updated_at", "2016-02-08 17:05:43.698696"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "owner"], ["created_at", "2016-02-08 17:05:43.705037"], ["updated_at", "2016-02-08 17:05:43.705037"]]
+  [1m[36m (4.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "member"], ["created_at", "2016-02-08 17:05:43.711737"], ["updated_at", "2016-02-08 17:05:43.711737"]]
+  [1m[36m (4.1ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "owner"], ["created_at", "2016-02-08 17:05:43.717790"], ["updated_at", "2016-02-08 17:05:43.717790"]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "owner"], ["created_at", "2016-02-08 17:05:43.724531"], ["updated_at", "2016-02-08 17:05:43.724531"]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 12], ["team_id", 7], ["employee_type", "owner"], ["created_at", "2016-02-08 17:05:43.730670"], ["updated_at", "2016-02-08 17:05:43.730670"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM "employees" WHERE "employees"."id" = ?  [["id", 12]]
+  [1m[36m (9.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mTeam Load (0.2ms)[0m  SELECT "teams".* FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "teams" WHERE "teams"."id" = ?  [["id", 7]]
+  [1m[36m (4.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mEmployeeTeam Load (0.2ms)[0m  SELECT "employee_teams".* FROM "employee_teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 90]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 91]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 92]]
+  [1m[36m (22.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 93]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 94]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 95]]
+  [1m[35m (5.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 96]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 97]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 98]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 99]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 100]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mDELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?[0m  [["id", 101]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  DELETE FROM "employee_teams" WHERE "employee_teams"."id" = ?  [["id", 102]]
+  [1m[36m (4.8ms)[0m  [1mcommit transaction[0m
+  [1m[35mProgressReport Load (0.2ms)[0m  SELECT "progress_reports".* FROM "progress_reports"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Utah black cats"], ["created_at", "2016-02-08 17:06:26.800689"], ["updated_at", "2016-02-08 17:06:26.800689"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Aletha"], ["last_name", "Stehr"], ["email", "gaylord_kertzmann@kiehn.co"], ["created_at", "2016-02-08 17:06:26.808824"], ["updated_at", "2016-02-08 17:06:26.808824"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:26.816695"], ["updated_at", "2016-02-08 17:06:26.816695"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:26.824138"], ["updated_at", "2016-02-08 17:06:26.824138"]]
+  [1m[35m (7.4ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:26.833931"], ["updated_at", "2016-02-08 17:06:26.833931"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.841391"], ["updated_at", "2016-02-08 17:06:26.841391"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.848777"], ["updated_at", "2016-02-08 17:06:26.848777"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.856124"], ["updated_at", "2016-02-08 17:06:26.856124"]]
+  [1m[35m (4.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.862527"], ["updated_at", "2016-02-08 17:06:26.862527"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:26.869917"], ["updated_at", "2016-02-08 17:06:26.869917"]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.877075"], ["updated_at", "2016-02-08 17:06:26.877075"]]
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.884020"], ["updated_at", "2016-02-08 17:06:26.884020"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.890396"], ["updated_at", "2016-02-08 17:06:26.890396"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.897519"], ["updated_at", "2016-02-08 17:06:26.897519"]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 13], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.904685"], ["updated_at", "2016-02-08 17:06:26.904685"]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "employees"."id" FROM "employees"[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "progress_reports" ("body", "author_id", "team_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["body", "Listicle cred celiac. Slow-carb try-hard humblebrag. Sartorial cred tacos park knausgaard retro slow-carb health. Thundercats vinegar sustainable everyday. Lumbersexual tumblr tattooed put a bird on it cred ugh synth occupy."], ["author_id", 13], ["team_id", 8], ["created_at", "2016-02-08 17:06:26.915411"], ["updated_at", "2016-02-08 17:06:26.915411"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Oregon wolves"], ["created_at", "2016-02-08 17:06:26.921755"], ["updated_at", "2016-02-08 17:06:26.921755"]]
+  [1m[35m (9.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Lilla"], ["last_name", "Ledner"], ["email", "marlin@schneidersauer.net"], ["created_at", "2016-02-08 17:06:26.933306"], ["updated_at", "2016-02-08 17:06:26.933306"]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:26.940495"], ["updated_at", "2016-02-08 17:06:26.940495"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:26.949218"], ["updated_at", "2016-02-08 17:06:26.949218"]]
+  [1m[36m (4.6ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.955902"], ["updated_at", "2016-02-08 17:06:26.955902"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 9], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.962003"], ["updated_at", "2016-02-08 17:06:26.962003"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 9], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.968697"], ["updated_at", "2016-02-08 17:06:26.968697"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 9], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.974895"], ["updated_at", "2016-02-08 17:06:26.974895"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.981446"], ["updated_at", "2016-02-08 17:06:26.981446"]]
+  [1m[36m (5.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 9], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.989329"], ["updated_at", "2016-02-08 17:06:26.989329"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:26.996802"], ["updated_at", "2016-02-08 17:06:26.996802"]]
+  [1m[36m (5.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.004650"], ["updated_at", "2016-02-08 17:06:27.004650"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.012494"], ["updated_at", "2016-02-08 17:06:27.012494"]]
+  [1m[36m (3.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 14], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.018468"], ["updated_at", "2016-02-08 17:06:27.018468"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "employees"."id" FROM "employees"
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "progress_reports" ("body", "author_id", "team_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Street wayfarers photo booth roof chicharrones celiac distillery kinfolk. Whatever vinyl selfies seitan mumblecore forage pug. Taxidermy raw denim poutine post-ironic schlitz humblebrag shabby chic freegan. Gastropub wayfarers brunch ugh celiac."], ["author_id", 13], ["team_id", 9], ["created_at", "2016-02-08 17:06:27.026221"], ["updated_at", "2016-02-08 17:06:27.026221"]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "New Jersey griffins"], ["created_at", "2016-02-08 17:06:27.032521"], ["updated_at", "2016-02-08 17:06:27.032521"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Tatyana"], ["last_name", "Lindgren"], ["email", "horace@pfannerstillkaulke.co"], ["created_at", "2016-02-08 17:06:27.038865"], ["updated_at", "2016-02-08 17:06:27.038865"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.046610"], ["updated_at", "2016-02-08 17:06:27.046610"]]
+  [1m[35m (6.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.059308"], ["updated_at", "2016-02-08 17:06:27.059308"]]
+  [1m[35m (5.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.067940"], ["updated_at", "2016-02-08 17:06:27.067940"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 10], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.074530"], ["updated_at", "2016-02-08 17:06:27.074530"]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.081434"], ["updated_at", "2016-02-08 17:06:27.081434"]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.087932"], ["updated_at", "2016-02-08 17:06:27.087932"]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.093692"], ["updated_at", "2016-02-08 17:06:27.093692"]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.100960"], ["updated_at", "2016-02-08 17:06:27.100960"]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.106865"], ["updated_at", "2016-02-08 17:06:27.106865"]]
+  [1m[35m (5.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.114988"], ["updated_at", "2016-02-08 17:06:27.114988"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.121714"], ["updated_at", "2016-02-08 17:06:27.121714"]]
+  [1m[35m (5.9ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.130093"], ["updated_at", "2016-02-08 17:06:27.130093"]]
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.137192"], ["updated_at", "2016-02-08 17:06:27.137192"]]
+  [1m[35m (5.3ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.144857"], ["updated_at", "2016-02-08 17:06:27.144857"]]
+  [1m[35m (3.7ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 15], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.150943"], ["updated_at", "2016-02-08 17:06:27.150943"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "employees"."id" FROM "employees"[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "progress_reports" ("body", "author_id", "team_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["body", "Roof vinegar pbr&b farm-to-table waistcoat park. Pork belly kinfolk venmo truffaut literally tousled knausgaard pbr&b. Fixie offal blog small batch. Cray fanny pack kombucha pabst try-hard freegan goth blog."], ["author_id", 14], ["team_id", 10], ["created_at", "2016-02-08 17:06:27.157742"], ["updated_at", "2016-02-08 17:06:27.157742"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "Michigan sons"], ["created_at", "2016-02-08 17:06:27.164441"], ["updated_at", "2016-02-08 17:06:27.164441"]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["first_name", "Hunter"], ["last_name", "Gerlach"], ["email", "lue.olson@gerlachbreitenberg.biz"], ["created_at", "2016-02-08 17:06:27.171425"], ["updated_at", "2016-02-08 17:06:27.171425"]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.177989"], ["updated_at", "2016-02-08 17:06:27.177989"]]
+  [1m[36m (6.4ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.187452"], ["updated_at", "2016-02-08 17:06:27.187452"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 9], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.205683"], ["updated_at", "2016-02-08 17:06:27.205683"]]
+  [1m[36m (6.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.214327"], ["updated_at", "2016-02-08 17:06:27.214327"]]
+  [1m[36m (4.5ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.221091"], ["updated_at", "2016-02-08 17:06:27.221091"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 11], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.235330"], ["updated_at", "2016-02-08 17:06:27.235330"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.241691"], ["updated_at", "2016-02-08 17:06:27.241691"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 11], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.248539"], ["updated_at", "2016-02-08 17:06:27.248539"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 11], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.254506"], ["updated_at", "2016-02-08 17:06:27.254506"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.261657"], ["updated_at", "2016-02-08 17:06:27.261657"]]
+  [1m[36m (5.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 10], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.268694"], ["updated_at", "2016-02-08 17:06:27.268694"]]
+  [1m[36m (3.8ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 9], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.274480"], ["updated_at", "2016-02-08 17:06:27.274480"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.280804"], ["updated_at", "2016-02-08 17:06:27.280804"]]
+  [1m[36m (4.9ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["employee_id", 16], ["team_id", 10], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.287732"], ["updated_at", "2016-02-08 17:06:27.287732"]]
+  [1m[36m (4.3ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  SELECT "employees"."id" FROM "employees"
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "progress_reports" ("body", "author_id", "team_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "Kogi hoodie twee irony. Gentrify tousled pitchfork disrupt wes anderson taxidermy. Bitters pug kombucha gentrify."], ["author_id", 14], ["team_id", 8], ["created_at", "2016-02-08 17:06:27.294815"], ["updated_at", "2016-02-08 17:06:27.294815"]]
+  [1m[35m (5.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "teams" ("name", "created_at", "updated_at") VALUES (?, ?, ?)  [["name", "Illinois vampires"], ["created_at", "2016-02-08 17:06:27.301693"], ["updated_at", "2016-02-08 17:06:27.301693"]]
+  [1m[36m (5.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employees" ("first_name", "last_name", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["first_name", "Georgette"], ["last_name", "Skiles"], ["email", "myrtle@dickinson.org"], ["created_at", "2016-02-08 17:06:27.309205"], ["updated_at", "2016-02-08 17:06:27.309205"]]
+  [1m[35m (9.5ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.321732"], ["updated_at", "2016-02-08 17:06:27.321732"]]
+  [1m[35m (8.0ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.334481"], ["updated_at", "2016-02-08 17:06:27.334481"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.341136"], ["updated_at", "2016-02-08 17:06:27.341136"]]
+  [1m[35m (4.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.348425"], ["updated_at", "2016-02-08 17:06:27.348425"]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.355050"], ["updated_at", "2016-02-08 17:06:27.355050"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.361591"], ["updated_at", "2016-02-08 17:06:27.361591"]]
+  [1m[35m (4.9ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 12], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.368484"], ["updated_at", "2016-02-08 17:06:27.368484"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 11], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.374632"], ["updated_at", "2016-02-08 17:06:27.374632"]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 9], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.380892"], ["updated_at", "2016-02-08 17:06:27.380892"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.386800"], ["updated_at", "2016-02-08 17:06:27.386800"]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 11], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.393194"], ["updated_at", "2016-02-08 17:06:27.393194"]]
+  [1m[35m (4.6ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 9], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.400135"], ["updated_at", "2016-02-08 17:06:27.400135"]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 8], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.406390"], ["updated_at", "2016-02-08 17:06:27.406390"]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.412827"], ["updated_at", "2016-02-08 17:06:27.412827"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.2ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 10], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.418695"], ["updated_at", "2016-02-08 17:06:27.418695"]]
+  [1m[35m (4.4ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.425253"], ["updated_at", "2016-02-08 17:06:27.425253"]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 12], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.432659"], ["updated_at", "2016-02-08 17:06:27.432659"]]
+  [1m[35m (4.2ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.438916"], ["updated_at", "2016-02-08 17:06:27.438916"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 9], ["employee_type", "member"], ["created_at", "2016-02-08 17:06:27.445187"], ["updated_at", "2016-02-08 17:06:27.445187"]]
+  [1m[35m (3.8ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "teams"."id" FROM "teams"[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "employee_teams" ("employee_id", "team_id", "employee_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["employee_id", 17], ["team_id", 8], ["employee_type", "owner"], ["created_at", "2016-02-08 17:06:27.450788"], ["updated_at", "2016-02-08 17:06:27.450788"]]
+  [1m[35m (4.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mSELECT "employees"."id" FROM "employees"[0m
+  [1m[35m (0.1ms)[0m  SELECT "teams"."id" FROM "teams"
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "progress_reports" ("body", "author_id", "team_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["body", "Ugh williamsburg listicle leggings stumptown kombucha. Franzen chillwave mixtape. Trust fund stumptown squid chicharrones fixie."], ["author_id", 16], ["team_id", 9], ["created_at", "2016-02-08 17:06:27.457501"], ["updated_at", "2016-02-08 17:06:27.457501"]]
+  [1m[36m (4.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mEmployee Load (0.3ms)[0m  SELECT "employees".* FROM "employees"
+  [1m[36mTeam Load (0.2ms)[0m  [1mSELECT "teams".* FROM "teams"[0m
+  [1m[35mProgressReport Load (0.1ms)[0m  SELECT "progress_reports".* FROM "progress_reports"
+  [1m[36mEmployeeTeam Load (0.9ms)[0m  [1mSELECT "employee_teams".* FROM "employee_teams"[0m
+  [1m[35mEmployee Load (0.2ms)[0m  SELECT  "employees".* FROM "employees"  ORDER BY "employees"."id" DESC LIMIT 1
+  [1m[36mEmployee Load (0.2ms)[0m  [1mSELECT  "employees".* FROM "employees"  ORDER BY "employees"."id" ASC LIMIT 1[0m
+  [1m[35mTeam Load (0.1ms)[0m  SELECT  "teams".* FROM "teams"  ORDER BY "teams"."id" ASC LIMIT 1
+  [1m[36mProgressReport Load (0.2ms)[0m  [1mSELECT  "progress_reports".* FROM "progress_reports"  ORDER BY "progress_reports"."id" ASC LIMIT 1[0m
+  [1m[35mTeam Load (0.4ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."employee_id" = ?  [[nil, 13]]
+  [1m[36mEmployee Load (0.3ms)[0m  [1mSELECT "employees".* FROM "employees" INNER JOIN "employee_teams" ON "employees"."id" = "employee_teams"."employee_id" WHERE "employee_teams"."team_id" = ?[0m  [["team_id", 8]]
+  [1m[35mProgressReport Load (0.5ms)[0m  SELECT "progress_reports".* FROM "progress_reports" WHERE "progress_reports"."employee_id" = ?  [[nil, 13]]
+  [1m[36mTeam Load (0.6ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."employee_id" = ?[0m  [[nil, 13]]
+  [1m[35mProgressReport Load (0.4ms)[0m  SELECT "progress_reports".* FROM "progress_reports" WHERE "progress_reports"."employee_id" = ?  [[nil, 13]]
+  [1m[36mProgressReport Load (0.2ms)[0m  [1mSELECT "progress_reports".* FROM "progress_reports" WHERE "progress_reports"."team_id" = ?[0m  [["team_id", 8]]
+  [1m[35mTeam Load (0.2ms)[0m  SELECT  "teams".* FROM "teams" WHERE "teams"."id" = ? LIMIT 1  [["id", 8]]
+  [1m[36mTeam Load (0.5ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."employee_id" = ?[0m  [[nil, 13]]
+  [1m[35mEmployeeTeam Load (0.2ms)[0m  SELECT "employee_teams".* FROM "employee_teams" WHERE "employee_teams"."employee_id" = ?  [["employee_id", 13]]
+  [1m[36mTeam Load (0.6ms)[0m  [1mSELECT "teams".* FROM "teams" WHERE "teams"."employee_id" = ?[0m  [[nil, 13]]
+  [1m[35mTeam Load (0.7ms)[0m  SELECT "teams".* FROM "teams" WHERE "teams"."employee_id" = ?  [[nil, 13]]
+  [1m[36mEmployee Load (0.1ms)[0m  [1mSELECT  "employees".* FROM "employees"  ORDER BY "employees"."id" ASC LIMIT 1[0m
+  [1m[35mProgressReport Load (0.1ms)[0m  SELECT  "progress_reports".* FROM "progress_reports"  ORDER BY "progress_reports"."id" ASC LIMIT 1
+  [1m[36mProgressReport Load (0.4ms)[0m  [1mSELECT  "progress_reports".* FROM "progress_reports"  ORDER BY "progress_reports"."id" ASC LIMIT 1[0m
