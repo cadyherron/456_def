@@ -48,6 +48,27 @@ Given the hash above, complete the following:
 ### Your HTML form here:
 
 ```html
+
+<form action="/users" method="post">
+  <input name="utf8" type="hidden" value="✓">
+  <input name="authenticity_token" type="hidden" value="t/72yWAJ4gzmlfy/QH6CQPbQx5Cz8MRK+/8fueweUU8=">
+
+  <label for="user[username]">Username:</label>
+  <input type="text" id="username" name="user[username]" required/>
+
+  <label for="user[email]">Email:</label>
+  <input type="text" id="email" name="user[email]"/>
+
+  <label for="user[password]">Password:</label>
+  <input type="password" id="password" name="user[password]" required/>
+
+  <label for="user[password_confirm]">Password Confirm:</label>
+  <input type="password" id="password-confirm" name="[user]password_confirm" required/>  
+
+
+  <button type="submit">Submit</button>
+</form>
+
 ```
 
 
